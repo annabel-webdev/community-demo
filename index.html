@@ -1,0 +1,477 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow" data-publish>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Founders Connect · Tech talks. Human questions.</title>
+<meta name="description" content="Founders Connect is a curated community and events series for founders and tech professionals, built across borders. Upcoming talks, panels and workshops in London.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_GB">
+<meta property="og:site_name" content="Founders Connect">
+<meta property="og:title" content="Founders Connect · Tech talks. Human questions.">
+<meta property="og:description" content="A curated space for founders and tech professionals. Built across borders.">
+<meta property="og:url" content="{{ссылка-сайта}}">
+<meta property="og:image" content="{{ссылка-сайта}}/assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" as="image" href="assets/hero-m.webp" media="(max-width: 860px)" fetchpriority="high">
+<link rel="preload" as="image" href="assets/hero.webp" media="(min-width: 861px)" fetchpriority="high">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%277%27 fill=%27%2317171c%27/%3E%3Ccircle cx=%2712%27 cy=%2716%27 r=%275%27 fill=%27%235454f4%27/%3E%3Ccircle cx=%2721%27 cy=%2716%27 r=%275%27 fill=%27%23ebfa3f%27/%3E%3C/svg%3E">
+<link rel="stylesheet" href="vibe.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Organization","name":"Founders Connect","description":"A curated community and events series for founders and tech professionals, built across borders.","url":"{{ссылка-сайта}}","logo":"{{ссылка-сайта}}/assets/og.jpg","email":"foundersconnectuk@gmail.com","sameAs":["https://www.linkedin.com/company/founders-connect-uk/","https://www.instagram.com/foundersconnect_uk/"],"address":{"@type":"PostalAddress","addressLocality":"London","addressCountry":"GB"}}
+</script>
+<style>
+  /* ---- тема: палитра и шрифты заказчика (не придумано – дано в ТЗ) ---- */
+  .v-page {
+    --v-canvas: #f6f5f1; --v-surface: #ffffff;
+    --v-ink: #17171c; --v-ink-soft: #5b5b66;
+    --v-accent: #ebfa3f; --v-accent-ink: #17171c;   /* жёлтая кнопка – основная */
+    --v-blue: #5454f4; --v-blue-ink: #ffffff;        /* синий – основной акцент бренда */
+    --v-orange: #fa8036;                              /* оранжевый – только мелкие элементы */
+    --v-font-display: "Space Grotesk", "Arial Black", system-ui, sans-serif;
+    --v-font-text: "Plus Jakarta Sans", "Segoe UI", system-ui, sans-serif;
+    --v-shadow-color: 10 10 14;
+    --v-e1: 0 1px 2px rgb(var(--v-shadow-color) / .10), 0 8px 22px rgb(var(--v-shadow-color) / .10);
+    --v-e2: 0 2px 6px rgb(var(--v-shadow-color) / .12), 0 22px 54px rgb(var(--v-shadow-color) / .16);
+    --v-edge: inset 0 1px 0 rgb(255 255 255 / .6);
+    --v-radius: 10px;
+    --v-section: clamp(3.5rem, 8vw, 7rem);
+    --v-display-weight: 600;
+  }
+  html, body { background: #f6f5f1; }
+  .v-page .v-lede { font-weight: 400; line-height: 1.5; }
+  .v-page .v-label { font-weight: 600; }
+  .v-page [id] { scroll-margin-top: 5.5rem; }
+  .v-page .v-display { text-transform: none; }
+
+  /* ---- шапка ---------------------------------------------------------- */
+  .bar { position: fixed; inset: 0 0 auto 0; z-index: 30; display: flex; align-items: center; justify-content: space-between;
+    padding: var(--v-4) var(--v-gutter); gap: var(--v-4);
+    background: linear-gradient(to bottom, rgb(23 23 28 / .55), rgb(23 23 28 / 0));
+    transition: background-color .3s var(--v-ease-out), box-shadow .3s var(--v-ease-out); }
+  .bar.is-scrolled { background: rgb(246 245 241 / .92); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); box-shadow: 0 1px 0 var(--v-hair); }
+  .bar.is-scrolled .bar__mark, .bar.is-scrolled .bar__mark b { color: var(--v-ink); }
+  .bar__mark { font-family: var(--v-font-display); font-weight: 600; font-size: var(--v-t-base); letter-spacing: -.01em; text-decoration: none;
+    color: #fff; display: inline-flex; align-items: center; min-height: 44px; white-space: nowrap; transition: color .3s; }
+  .bar__mark b { color: var(--v-blue); font-weight: 700; transition: color .3s; }
+  .bar.is-scrolled .bar__mark b { color: var(--v-blue); }
+  @media (max-width: 700px) { .bar .v-btn, .bar .v-btn--ghost { padding: 0 1em; min-height: 40px; font-size: .82rem; } }
+
+  /* ---- 1 · hero: панельная дискуссия, тёмный скрим ---------------------- */
+  .hero__back img { object-position: 50% 38%; }
+  .hero__brandline { display: block; margin: var(--v-5) 0; font-family: var(--v-font-display); font-weight: 700; font-size: var(--v-t-lg);
+    letter-spacing: .04em; color: #fff; }
+  .hero__brandline b { color: var(--v-blue-accent, #8d8dff); }
+  .hero__copy .v-display--xl { color: #fff; font-size: clamp(2.1rem, 1.3rem + 3vw, 4rem); max-width: 16ch; }
+  .hero__copy .v-lede { color: rgb(255 255 255 / .82); max-width: 40ch; }
+  .hero__cta { display: flex; flex-wrap: wrap; gap: var(--v-4); margin-top: var(--v-6); }
+  .hero__cta .v-btn--ghost { color: #fff; box-shadow: inset 0 0 0 1px rgb(255 255 255 / .5); }
+  .hero__cta .v-btn--ghost:hover { box-shadow: inset 0 0 0 1px #fff; }
+  @media (max-width: 860px) { .hero__copy .v-display--xl { max-width: none; } }
+
+  /* ---- 2 · инфо-полоса -------------------------------------------------- */
+  .stat-strip { display: flex; align-items: center; justify-content: center; gap: var(--v-5); flex-wrap: wrap;
+    padding: var(--v-5) var(--v-gutter); font-family: var(--v-font-display); font-weight: 600; font-size: var(--v-t-lg); letter-spacing: -.01em; }
+  .stat-strip .bar-sep { width: 1px; height: 1.3em; background: var(--v-hair-strong); }
+  .stat-strip span.loc { font-family: var(--v-font-text); font-weight: 500; font-size: var(--v-t-base); color: var(--v-ink-soft); }
+  @media (max-width: 560px) { .stat-strip { gap: var(--v-3); font-size: var(--v-t-base); } }
+
+  /* ---- 3 · what: 4 фото, смещённая сетка -------------------------------- */
+  .what__head { max-width: 40rem; margin-bottom: var(--v-7); }
+  .what__formats { margin-top: var(--v-5); font-size: var(--v-t-lg); font-family: var(--v-font-display); letter-spacing: -.005em; }
+  .what__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--v-5); }
+  .what__grid figure:nth-child(2n) { transform: translateY(2.2rem); }
+  .what__grid figure { border-radius: var(--v-radius); overflow: hidden; aspect-ratio: 3/4; box-shadow: var(--v-e1), var(--v-edge); background: var(--v-surface); }
+  .what__grid img { width: 100%; height: 100%; object-fit: cover; }
+  .what__cap { display: block; margin-top: var(--v-3); font-size: var(--v-t-sm); color: var(--v-ink-soft); }
+  @media (max-width: 860px) { .what__grid { grid-template-columns: repeat(2, 1fr); gap: var(--v-4); } .what__grid figure:nth-child(2n) { transform: translateY(1.4rem); } }
+
+  /* ---- 4 · upcoming events: лента карточек ------------------------------ */
+  .ev-rail__head { position: absolute; left: var(--v-gutter); top: clamp(3.5rem, 9vh, 6rem); z-index: 3; max-width: 22rem; }
+  [data-v-pan] { align-items: stretch; }
+  .ev-card { width: min(84vw, 23rem); flex: none; background: var(--v-surface); border-radius: var(--v-radius); padding: var(--v-6); box-shadow: var(--v-e1), var(--v-edge);
+    display: flex; flex-direction: column; gap: var(--v-3); }
+  .ev-card:first-child { margin-left: calc(22rem + var(--v-6)); }
+  .ev-card__cat { font-size: var(--v-t-xs); letter-spacing: var(--v-track-wide); text-transform: uppercase; color: var(--v-blue); font-weight: 600; }
+  .ev-card h3 { font-family: var(--v-font-display); font-size: var(--v-t-lg); line-height: 1.18; }
+  .ev-card__meta { display: grid; gap: var(--v-1); font-size: var(--v-t-sm); color: var(--v-ink-soft); }
+  .ev-card__meta span { display: inline-flex; align-items: center; gap: .5em; }
+  .ev-card__meta svg { width: 1em; height: 1em; flex: none; opacity: .7; }
+  .ev-card p.v-soft { font-size: var(--v-t-sm); flex: 1; }
+  .ev-card .v-btn { align-self: flex-start; margin-top: auto; }
+  .ev-card__pill { align-self: flex-start; margin-top: auto; font-size: var(--v-t-xs); letter-spacing: var(--v-track-wide); text-transform: uppercase;
+    font-weight: 700; color: var(--v-orange); padding: .5em 0; }
+  @media (max-width: 860px) { .ev-card:first-child { margin-left: var(--v-gutter); } .ev-rail__head { position: static; max-width: none; padding: 0 var(--v-gutter); margin-bottom: var(--v-5); } }
+
+  /* ---- 5 · past events: ручная карусель --------------------------------- */
+  .past__head { display: flex; justify-content: space-between; align-items: end; gap: var(--v-5); margin-bottom: var(--v-6); flex-wrap: wrap; }
+  .past__track { display: flex; gap: var(--v-5); overflow-x: auto; scroll-snap-type: x proximity; padding-bottom: var(--v-3);
+    scrollbar-width: none; }
+  .past__track::-webkit-scrollbar { display: none; }
+  .past-card { scroll-snap-align: start; flex: none; width: min(78vw, 21rem); display: flex; flex-direction: column; }
+  .past-card figure { border-radius: var(--v-radius); overflow: hidden; aspect-ratio: 4/3; box-shadow: var(--v-e1), var(--v-edge); margin-bottom: var(--v-4); }
+  .past-card img { width: 100%; height: 100%; object-fit: cover; }
+  .past-card__meta { font-size: var(--v-t-xs); letter-spacing: var(--v-track-wide); text-transform: uppercase; color: var(--v-ink-soft); margin-bottom: .4em; }
+  .past-card h3 { font-family: var(--v-font-display); font-size: var(--v-t-base); line-height: 1.25; margin-bottom: var(--v-2); min-height: 2.6em; }
+  .past-card p { font-size: var(--v-t-sm); color: var(--v-ink-soft); flex: 1; }
+  .past-card .co { display: block; margin-top: var(--v-3); font-size: var(--v-t-xs); font-style: italic; color: var(--v-ink-soft); }
+  @media (max-width: 700px) { .past-card { width: 82vw; } }
+
+  /* ---- 6 · who: плашка в 2 цвета (index ventures) + свой ход hover ------ */
+  .who { display: grid; grid-template-columns: 1fr 1fr; border-radius: var(--v-radius); overflow: hidden; box-shadow: var(--v-e2); }
+  .who__panel { background: color-mix(in oklab, var(--v-hc, var(--v-blue)) 12%, var(--v-surface)); padding: var(--v-9) var(--v-8); display: flex; flex-direction: column; justify-content: center;
+    transition: background .4s var(--v-ease-out); }
+  .who__fig { position: relative; min-height: 26rem; }
+  .who__fig img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .who__cats { margin-top: var(--v-6); font-family: var(--v-font-display); font-size: clamp(1.1rem, .9rem + 1vw, 1.6rem); line-height: 1.5; letter-spacing: -.005em; }
+  .who__cats span { cursor: default; transition: color .2s; }
+  @media (hover: hover) and (pointer: fine) { .who__cats span:hover { color: var(--v-hc, var(--v-blue)); } }
+  @media (max-width: 860px) { .who { grid-template-columns: 1fr; } .who__panel { padding: var(--v-7) var(--v-gutter); } .who__fig { min-height: 16rem; } }
+
+  /* ---- 7 · why: typography-led, монограмма вместо фото ------------------ */
+  .why { max-width: 46rem; }
+  .why .v-display { font-size: clamp(1.9rem, 1.3rem + 2.2vw, 3.1rem); line-height: 1.12; }
+  .why__byline { display: flex; align-items: center; gap: var(--v-4); margin-top: var(--v-7); }
+  .why__mono { width: 3.2rem; height: 3.2rem; border-radius: 50%; background: var(--v-blue); color: #fff; display: grid; place-items: center;
+    font-family: var(--v-font-display); font-weight: 700; font-size: var(--v-t-base); flex: none; }
+  .why__who b { display: block; font-weight: 600; color: var(--v-ink); }
+  .why__who span { font-size: var(--v-t-sm); color: var(--v-ink-soft); }
+  .why__li { margin-left: auto; width: 2.2rem; height: 2.2rem; border-radius: 50%; background: var(--v-blue); display: grid; place-items: center; flex: none; }
+  .why__li svg { width: 1.1rem; height: 1.1rem; fill: #fff; }
+
+  /* ---- 8 · get involved: 3 карточки, тонкий цветной акцент сверху ------- */
+  .gi__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--v-5); }
+  .gi-card { border-radius: var(--v-radius); overflow: hidden; background: var(--v-surface); box-shadow: var(--v-e1), var(--v-edge); border-top: 3px solid var(--v-gc, var(--v-blue)); display: flex; flex-direction: column; }
+  .gi-card figure { aspect-ratio: 3/4; }
+  .gi-card img { width: 100%; height: 100%; object-fit: cover; }
+  .gi-card__body { padding: var(--v-5); display: flex; flex-direction: column; gap: var(--v-3); flex: 1; }
+  .gi-card__label { font-size: var(--v-t-xs); letter-spacing: var(--v-track-wide); text-transform: uppercase; font-weight: 700; color: var(--v-gc, var(--v-blue)); }
+  .gi-card h3 { font-family: var(--v-font-display); font-size: var(--v-t-lg); line-height: 1.25; }
+  .gi-card p.v-soft { font-size: var(--v-t-sm); flex: 1; }
+  .gi-card .v-btn, .gi-card .v-btn--ghost { align-self: flex-start; margin-top: var(--v-2); }
+  @media (max-width: 860px) { .gi__grid { grid-template-columns: 1fr; } }
+
+  /* ---- 9 · partners: сетка логотипов-заглушек --------------------------- */
+  .partners__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr)); gap: var(--v-5); }
+  .partner-slot { aspect-ratio: 16/8; border: 1px solid var(--v-hair-strong); border-radius: var(--v-radius); display: grid; place-items: center;
+    color: var(--v-ink-soft); font-size: var(--v-t-xs); letter-spacing: var(--v-track-wide); text-transform: uppercase; }
+
+  /* ---- 10 · subscribe + footer: тёмный блок, букет закрытия -------------- */
+  .close { background: #17171c; color: #fff; border-radius: 0; }
+  .close .v-display { color: #fff; }
+  .close .v-soft { color: rgb(255 255 255 / .62); }
+  .close__inner { display: grid; grid-template-columns: 1.1fr .9fr; gap: var(--v-9); align-items: center; }
+  .close__form { display: flex; flex-direction: column; gap: var(--v-4); max-width: 26rem; }
+  .close__row { display: flex; gap: var(--v-3); }
+  .close__row input[type="email"] { flex: 1; min-width: 0; padding: .9em 1.1em; border-radius: 999px; border: 1px solid rgb(255 255 255 / .25);
+    background: rgb(255 255 255 / .06); color: #fff; font: inherit; font-size: var(--v-t-sm); }
+  .close__row input::placeholder { color: rgb(255 255 255 / .45); }
+  .close__consent { display: flex; align-items: flex-start; gap: .6em; font-size: var(--v-t-xs); color: rgb(255 255 255 / .62); }
+  .close__consent input { margin-top: .2em; accent-color: var(--v-accent); }
+  .close .v-btn { background: var(--v-accent); color: var(--v-accent-ink); white-space: nowrap; }
+  .foot { margin-top: var(--v-9); padding-top: var(--v-6); border-top: 1px solid rgb(255 255 255 / .14); display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--v-4);
+    font-size: var(--v-t-sm); color: rgb(255 255 255 / .6); }
+  .foot a { color: rgb(255 255 255 / .85); text-decoration: none; }
+  .foot a:hover { text-decoration: underline; }
+  .foot__brand { font-family: var(--v-font-display); font-weight: 700; color: #fff; }
+  @media (max-width: 860px) { .close__inner { grid-template-columns: 1fr; gap: var(--v-6); } }
+</style>
+</head>
+<body>
+<div class="v-page">
+  <span data-v-progress></span>
+  <div class="v-grain" aria-hidden="true"></div>
+
+  <header class="bar">
+    <a class="bar__mark" href="#top">Founders<b> Connect</b></a>
+    <nav aria-label="Primary">
+      <a class="v-btn--ghost v-btn" href="#events" style="background:transparent;box-shadow:inset 0 0 0 1px rgb(255 255 255 / .5);color:#fff;">UPCOMING EVENTS →</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- 01 · HERO -->
+    <section id="top" data-v-act="pin" data-v-span="2.1" data-v-drift="#17171c" aria-label="Founders Connect">
+      <div data-v-stage>
+        <div class="v-layer hero__back" data-v-parallax="-0.5">
+          <picture>
+            <source media="(max-width: 860px)" srcset="assets/hero-m.webp">
+            <img src="assets/hero.webp" alt="" width="1920" height="1080" fetchpriority="high">
+          </picture>
+        </div>
+        <div class="v-scrim v-scrim--lead" aria-hidden="true"></div>
+        <div class="v-copy v-copy--lead hero__copy" data-v-cue="0 0.85 0 0.1">
+          <h1 class="v-display v-display--xl" data-v-kinetic="lines">Tech talks.<br>Human questions.</h1>
+          <span class="hero__brandline">FOUNDERS<b> CONNECT</b></span>
+          <p class="v-lede">A curated space for founders and tech professionals. Built across borders.</p>
+          <div class="hero__cta">
+            <a class="v-btn" href="#events">UPCOMING EVENTS →</a>
+            <a class="v-btn--ghost v-btn" href="#involved">JOIN THE COMMUNITY →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02 · ИНФО-ПОЛОСА -->
+    <section class="v-section--tight" data-v-act="flow" data-v-drift="#f6f5f1" aria-label="Founders Connect by the numbers">
+      <div class="stat-strip" data-v-in data-v-stagger="60">
+        <span class="v-nums"><span data-v-count="0 35">0</span>+ events</span>
+        <i class="bar-sep" aria-hidden="true"></i>
+        <span class="v-nums"><span data-v-count="0 2000">0</span>+ participants</span>
+        <i class="bar-sep" aria-hidden="true"></i>
+        <span class="loc">London</span>
+      </div>
+    </section>
+
+    <!-- 03 · WHAT -->
+    <section class="v-section v-section--tight" data-v-act="flow" id="what" aria-label="What we run">
+      <div class="v-wrap">
+        <div class="what__head" data-v-in data-v-stagger="70">
+          <span class="v-label">What</span>
+          <h2 class="v-display v-display--lg">A thinking space to test things out.</h2>
+          <p class="what__formats v-soft">Industry Panels · Talks · Workshops · Conferences</p>
+        </div>
+        <div class="what__grid" data-v-in data-v-stagger="80">
+          <figure><img src="assets/what-panels.webp" alt="Founders and tech professionals in conversation during an industry panel" width="900" height="1200" loading="lazy"></figure>
+          <figure><img src="assets/what-talks.webp" alt="A speaker mid-talk on a minimalist stage" width="900" height="1200" loading="lazy"></figure>
+          <figure><img src="assets/what-workshops.webp" alt="A small group working through a hands-on workshop" width="900" height="1200" loading="lazy"></figure>
+          <figure><img src="assets/what-conferences.webp" alt="A conference hall filling up before a talk" width="900" height="1200" loading="lazy"></figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 · UPCOMING EVENTS -->
+    <section data-v-act="pan" data-v-span="2.3" id="events" aria-label="Upcoming events">
+      <div data-v-stage>
+        <div class="ev-rail__head">
+          <span class="v-label">Upcoming events</span>
+          <h2 class="v-display v-display--md">UPCOMING EVENTS</h2>
+        </div>
+        <div data-v-pan="0.05">
+          <article class="ev-card">
+            <span class="ev-card__cat">Industry Panel</span>
+            <h3>Rethinking Exits: What Founders Build For Now</h3>
+            <div class="ev-card__meta">
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>22 October 2026 · 18:30–21:30</span>
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.4"/></svg>London · W1T 4AQ</span>
+            </div>
+            <p class="v-soft">Exited founders on whether to build for an exit – and how acquisition scenarios affect decisions long before a sale.</p>
+            <a class="v-btn" href="{{ссылка-luma-1}}" target="_blank" rel="noopener">REGISTER ON LUMA →</a>
+          </article>
+          <article class="ev-card">
+            <span class="ev-card__cat">Industry Panel</span>
+            <h3>Redefining Engineering Capability: From Human-Centric Teams to AI Co-Piloting</h3>
+            <div class="ev-card__meta">
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>27 October 2026 · 18:00–20:30</span>
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.4"/></svg>London · Venue TBA</span>
+            </div>
+            <p class="v-soft">How engineering teams are built and evolve – from team composition to AI, external expertise and technical leadership.</p>
+            <a class="v-btn" href="{{ссылка-luma-2}}" target="_blank" rel="noopener">REGISTER ON LUMA →</a>
+          </article>
+          <article class="ev-card">
+            <span class="ev-card__cat">Conference · 120 founders and investors</span>
+            <h3>London AI Forum: Funding AI</h3>
+            <div class="ev-card__meta">
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>18 November 2026 · 10:30–16:30</span>
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.4"/></svg>London · Civo Tech Junction</span>
+            </div>
+            <p class="v-soft">A one-day forum on funding, evaluating and scaling AI companies across enterprise software, B2B applications, fintech and AI infrastructure. Approval required.</p>
+            <span class="ev-card__pill">Coming soon</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 · SELECTED PAST EVENTS -->
+    <section class="v-section" data-v-act="flow" data-v-drift="#f6f5f1" id="past" aria-label="Selected past events">
+      <div class="v-wrap">
+        <div class="past__head" data-v-in data-v-in-self>
+          <div><span class="v-label">Selected past events</span><h2 class="v-display v-display--lg">SELECTED PAST EVENTS</h2></div>
+        </div>
+        <div class="past__track" data-v-in data-v-stagger="70">
+          <article class="past-card">
+            <figure><img src="assets/past-1.webp" alt="A large conference hall during Ladies Who Tech" width="900" height="675" loading="lazy"></figure>
+            <span class="past-card__meta">June 2026 · Conference</span>
+            <h3>Ladies Who Tech 2026</h3>
+            <p>One-day conference with 50+ speakers, 5 tracks and 300+ women in tech. Speakers from Google, Visa, Miro, monday.com, Tech Nation, Owl Ventures, London AI Hub, South East Angels and more.</p>
+            <span class="co">Co-organised by Anastasia Kachalova, Founder of Founders Connect.</span>
+          </article>
+          <article class="past-card">
+            <figure><img src="assets/past-2.webp" alt="An industry panel on robotics" width="900" height="675" loading="lazy"></figure>
+            <span class="past-card__meta">May 2026 · Industry Panel</span>
+            <h3>Robotics: From Systems to Scale</h3>
+            <p>A discussion on the practical challenges of moving robots from lab demos into reliable, real-world operation. Speakers from Grishin Robotics, Humanoid, Ocado Technology, Johnson &amp; Johnson MedTech and Fairway Dynamics.</p>
+            <span class="co">In collaboration with Tower.</span>
+          </article>
+          <article class="past-card">
+            <figure><img src="assets/past-3.webp" alt="A speaker mid-talk" width="900" height="675" loading="lazy"></figure>
+            <span class="past-card__meta">March 2026 · Talk</span>
+            <h3>Beyond Productivity</h3>
+            <p>A science-backed discussion on attention, decision-making and cognitive performance in high-intensity environments. Speakers from neuroscience and performance psychology.</p>
+          </article>
+          <article class="past-card">
+            <figure><img src="assets/past-4.webp" alt="A panel of founders and investors" width="900" height="675" loading="lazy"></figure>
+            <span class="past-card__meta">March 2025 · Industry Panel</span>
+            <h3>How to Build a Winning Tech Team</h3>
+            <p>Founders and investors on hiring, team dynamics and building under pressure.</p>
+          </article>
+          <article class="past-card">
+            <figure><img src="assets/past-5.webp" alt="An informal open-mic pitching night" width="900" height="675" loading="lazy"></figure>
+            <span class="past-card__meta">June 2024 · Open Mic · Pitching &amp; Networking</span>
+            <h3>Founders Open Mic</h3>
+            <p>One-minute pitches from early-stage founders. 20+ founders, 200+ guests. Speaker from Wharton Asset Management.</p>
+            <span class="co">In collaboration with Rarefounders.</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 06 · WHO -->
+    <section class="v-section" data-v-act="flow" id="who" aria-label="Who it's for">
+      <div class="v-wrap">
+        <div class="who" id="whoPanel">
+          <div class="who__panel">
+            <span class="v-label">Who</span>
+            <h2 class="v-display v-display--lg">Curious. Driven.<br>Still figuring things out.</h2>
+            <p class="who__cats" id="whoCats">
+              <span data-hc="#5454f4">Startup Founders</span> · <span data-hc="#fa8036">Tech Professionals</span> · <span data-hc="#5454f4">Angel Investors</span> · <span data-hc="#17171c">VCs</span> · <span data-hc="#5454f4">Advisers</span> · <span data-hc="#fa8036">Researchers</span>
+            </p>
+          </div>
+          <figure class="who__fig"><img src="assets/who.webp" alt="A small group chatting during a networking break" width="1200" height="1600" loading="lazy"></figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- 07 · WHY -->
+    <section class="v-section" data-v-act="flow" data-v-drift="#f6f5f1" id="why" aria-label="Why Founders Connect exists">
+      <div class="v-wrap">
+        <div class="why" data-v-in data-v-stagger="80">
+          <span class="v-label">Why</span>
+          <h2 class="v-display">Ideas worth arguing about.<br>People worth thinking with.</h2>
+          <div class="why__byline">
+            <span class="why__mono" aria-hidden="true">AK</span>
+            <span class="why__who"><b>Anastasia Kachalova</b><span>Founder, Founders Connect</span></span>
+            <a class="why__li" href="https://www.linkedin.com/in/businesseventuk/" target="_blank" rel="noopener" aria-label="Anastasia Kachalova on LinkedIn">
+              <svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.82-2.05 3.75-2.05 4 0 4.75 2.63 4.75 6.05V21h-4v-5.5c0-1.3-.02-3-1.82-3-1.83 0-2.1 1.42-2.1 2.9V21H9z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 08 · GET INVOLVED -->
+    <section class="v-section" data-v-act="flow" id="involved" aria-label="Get involved">
+      <div class="v-wrap">
+        <div class="what__head" data-v-in data-v-in-self>
+          <span class="v-label">Get involved</span>
+          <h2 class="v-display v-display--lg">GET INVOLVED</h2>
+        </div>
+        <div class="gi__grid" data-v-in data-v-stagger="90">
+          <article class="gi-card" style="--v-gc:#5454f4;">
+            <figure><img src="assets/get-attend.webp" alt="An attendee asking a question during a talk" width="900" height="1200" loading="lazy"></figure>
+            <div class="gi-card__body">
+              <span class="gi-card__label">Attend</span>
+              <h3>Bring a question. Connect. Explore.</h3>
+              <p class="v-soft"></p>
+              <a class="v-btn" href="#events">UPCOMING EVENTS →</a>
+            </div>
+          </article>
+          <article class="gi-card" style="--v-gc:#fa8036;">
+            <figure><img src="assets/get-speak.webp" alt="A speaker mid-gesture holding a microphone" width="900" height="1200" loading="lazy"></figure>
+            <div class="gi-card__body">
+              <span class="gi-card__label">Speak</span>
+              <h3>Bring a story. Make us think.</h3>
+              <p class="v-soft"></p>
+              <a class="v-btn--ghost v-btn" href="mailto:foundersconnectuk@gmail.com?subject=Speaking%20at%20Founders%20Connect">SPEAK OR SUGGEST A SPEAKER →</a>
+            </div>
+          </article>
+          <article class="gi-card" style="--v-gc:#17171c;">
+            <figure><img src="assets/get-partner.webp" alt="Two people shaking hands at an event" width="900" height="1200" loading="lazy"></figure>
+            <div class="gi-card__body">
+              <span class="gi-card__label">Partner</span>
+              <h3>Build an event with us.</h3>
+              <p class="v-soft">Co-host. Sponsor. Curate.</p>
+              <a class="v-btn--ghost v-btn" href="mailto:foundersconnectuk@gmail.com?subject=Partnering%20with%20Founders%20Connect">GET IN TOUCH →</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 09 · EVENT PARTNERS -->
+    <section class="v-section v-section--tight" data-v-act="flow" data-v-drift="#ffffff" aria-label="Event partners">
+      <div class="v-wrap">
+        <div class="what__head" data-v-in data-v-in-self><span class="v-label">Event partners</span><h2 class="v-display v-display--lg">EVENT PARTNERS</h2></div>
+        <div class="partners__grid" data-v-in data-v-stagger="60">
+          <div class="partner-slot">{{логотип}}</div>
+          <div class="partner-slot">{{логотип}}</div>
+          <div class="partner-slot">{{логотип}}</div>
+          <div class="partner-slot">{{логотип}}</div>
+          <div class="partner-slot">{{логотип}}</div>
+          <div class="partner-slot">{{логотип}}</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10 · SUBSCRIBE + ПОДВАЛ -->
+    <section class="v-section" data-v-act="flow" data-v-drift="#17171c" aria-label="Subscribe">
+      <div class="v-wrap close">
+        <div class="close__inner">
+          <div data-v-in data-v-stagger="80">
+            <h2 class="v-display v-display--lg">Stay close.</h2>
+            <p class="v-lede v-soft">Upcoming events from Founders Connect.</p>
+          </div>
+          <form class="close__form" data-v-in data-v-stagger="80" onsubmit="return false">
+            <div class="close__row">
+              <input type="email" placeholder="you@company.com" aria-label="Email" required>
+              <button class="v-btn" type="submit">SUBSCRIBE →</button>
+            </div>
+            <label class="close__consent"><input type="checkbox" required> Email me about upcoming events</label>
+          </form>
+        </div>
+        <footer class="foot">
+          <span class="foot__brand">FOUNDERS CONNECT</span>
+          <span>London · UK</span>
+          <span><a href="https://www.linkedin.com/company/founders-connect-uk/" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://www.instagram.com/foundersconnect_uk/" target="_blank" rel="noopener">Instagram</a> · <a href="mailto:foundersconnectuk@gmail.com">foundersconnectuk@gmail.com</a></span>
+          <span><a href="#">Privacy Policy</a> · <a href="#">Terms &amp; Conditions</a> · <a href="#">Cookie Policy</a></span>
+          <span>© 2026 Founders Connect</span>
+        </footer>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<script src="vibe.js"></script>
+<script>
+  if (window.matchMedia('(max-width: 860px)').matches) {
+    document.getElementById('top').setAttribute('data-v-span', '1.7');
+  }
+  Vibe.mount(document.querySelector('.v-page'));
+
+  (function () {
+    var bar = document.querySelector('.bar'), on = null;
+    function tick() { var s = window.scrollY > 40; if (s !== on) { on = s; bar.classList.toggle('is-scrolled', s); } }
+    window.addEventListener('scroll', tick, { passive: true }); tick();
+  })();
+
+  // Фирменный ход: плашка WHO меняет акцент под наведённую категорию (референс indexventures.com).
+  (function () {
+    var panel = document.getElementById('whoPanel');
+    var cats = document.getElementById('whoCats');
+    if (!panel || !cats || !window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+    cats.querySelectorAll('span[data-hc]').forEach(function (el) {
+      el.addEventListener('mouseenter', function () { panel.style.setProperty('--v-hc', el.getAttribute('data-hc')); });
+    });
+    panel.addEventListener('mouseleave', function () { panel.style.setProperty('--v-hc', '#5454f4'); });
+  })();
+</script>
+</body>
+</html>
